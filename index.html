@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>موقع الخلفاء الراشدين</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <img id="site-logo" src="" alt="شعار" class="logo">
+  <div class="brand">
+    <h1>جمعية الخلفاء الراشدين</h1>
+    <p class="subtitle">موقع الخلفاء الراشدين</p>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <button onclick="show('home')">الرئيسية</button>
+  <button onclick="show('activities')">النشاطات</button>
+  <button onclick="show('blogs')">المدونة</button>
+  <button onclick="show('donate')">التبرع</button>
+  <button onclick="show('contact')">تواصل</button>
+  <button onclick="show('admin')">لوحة الأدمن</button>
+</nav>
+
+<main>
+  <section id="home" class="view active">
+    <h2>الفيديوهات والصور للتبني</h2>
+    <div id="videos-list" class="grid"></div>
+  </section>
+
+  <section id="activities" class="view">
+    <h2>نشاطات الجمعية</h2>
+    <div id="activities-list" class="grid"></div>
+  </section>
+
+  <section id="blogs" class="view">
+    <h2>مدونة الفريق</h2>
+    <div id="blogs-list" class="grid"></div>
+  </section>
+
+  <section id="donate" class="view">
+    <h2>معلومات التبرع</h2>
+    <div class="card">
+      <p>ضع هنا معلومات الحساب البنكي ومحافظ الدفع.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="view">
+    <h2>تواصل معنا</h2>
+    <div class="card">
+      <p>الهاتف: 059xxxxxxx</p>
+      <p>البريد: info@example.com</p>
+    </div>
+  </section>
+
+  <section id="admin" class="view">
+    <h2>لوحة الأدمن</h2>
+
+    <div id="login-box" class="card">
+      <h3>تسجيل الدخول</h3>
+      <input id="admin-user" placeholder="اسم المستخدم" />
+      <input id="admin-pass" placeholder="كلمة المرور" type="password" />
+      <div class="row">
+        <button class="btn" onclick="login()">دخول</button>
+      </div>
+      <p class="help">المستخدمون يديرون الموقع من هنا.</p>
+    </div>
+
+    <div id="admin-panel" class="card hidden">
+      <h3>لوحة الإدارة</h3>
+
+      <!-- Logo -->
+      <div class="admin-block">
+        <h4>الشعار</h4>
+        <input id="logo-file" type="file" accept="image/*" />
+        <button class="btn" onclick="uploadLogo()">رفع الشعار</button>
+        <button class="btn alt" onclick="deleteLogo()">حذف الشعار</button>
+      </div>
+
+      <!-- Files (images/videos) upload general -->
+      <div class="admin-block">
+        <h4>رفع ملف (صورة أو فيديو)</h4>
+        <input id="file-input" type="file" accept="image/*,video/*" />
+        <div class="progress">
+          <div id="progress-bar"></div>
+        </div>
+        <button class="btn" onclick="uploadFile()">رفع الملف</button>
+        <div id="uploads-list"></div>
+      </div>
+
+      <!-- Videos CRUD -->
+      <div class="admin-block">
+        <h4>الفيديوهات</h4>
+        <input id="video-title" placeholder="عنوان الفيديو" />
+        <textarea id="video-desc" placeholder="قصة/وصف"></textarea>
+        <input id="video-amount" placeholder="المبلغ المطلوب" />
+        <select id="video-file-select"></select>
+        <div class="row">
+          <button class="btn" onclick="adminAddVideo()">إضافة فيديو</button>
+        </div>
+        <div id="admin-videos-list"></div>
+      </div>
+
+      <!-- Activities CRUD -->
+      <div class="admin-block">
+        <h4>النشاطات</h4>
+        <input id="activity-title" placeholder="عنوان النشاط" />
+        <textarea id="activity-desc" placeholder="وصف النشاط"></textarea>
+        <select id="activity-file-select"></select>
+        <div class="row"><button class="btn" onclick="adminAddActivity()">إضافة نشاط</button></div>
+        <div id="admin-activities-list"></div>
+      </div>
+
+      <!-- Blogs CRUD -->
+      <div class="admin-block">
+        <h4>التدوينات</h4>
+        <input id="blog-title" placeholder="عنوان التدوينة" />
+        <textarea id="blog-body" placeholder="نص التدوينة"></textarea>
+        <div class="row"><button class="btn" onclick="adminAddBlog()">إضافة تدوينة</button></div>
+        <div id="admin-blogs-list"></div>
+      </div>
+
+      <!-- Admin accounts -->
+      <div class="admin-block">
+        <h4>حسابات الأدمن</h4>
+        <input id="new-admin-user" placeholder="اسم مستخدم جديد" />
+        <input id="new-admin-pass" placeholder="كلمة مرور جديدة" />
+        <div class="row"><button class="btn" onclick="adminAddAccount()">إضافة حساب</button></div>
+        <div id="admin-accounts-list"></div>
+      </div>
+
+      <div class="row">
+        <button class="btn alt" onclick="logout()">تسجيل خروج</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div>© 2025 جمعية الخلفاء الراشدين</div>
+  <div class="footer-contact">للتبرع: info@example.com</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
